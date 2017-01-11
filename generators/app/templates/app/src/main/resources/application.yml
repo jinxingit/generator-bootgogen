@@ -1,0 +1,104 @@
+server:
+  port: 8080
+  session:
+    timeout: 50000
+
+endpoints:
+  shutdown:
+    enabled: true
+
+spring:
+  application:
+    name: <%=projectName%>
+  http:
+    multipart:
+      enabled: true
+      max-file-size: 10Mb
+      max-request-size: 100Mb
+    encoding:
+      enabled: true
+      charset: UTF-8
+  output:
+    ansi:
+        enabled: ALWAYS
+  <% if (redis) { %>
+  redis:
+    host: 
+    port: 
+    password: 
+    timeout: 1800000
+  <% } %>
+  <% if (mongodb) { %>
+  data:
+    mongodb:
+      host:
+      port: 
+      database: 
+  <% } %>
+  aop:
+    auto: true
+    proxy-target-class: false
+  datasource:
+    name: nirvanaDatasource
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://<%=mysqlHost%>:<%=mysqlPort%>/<%=mysqlDb%>?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    username: <%=mysqlUser%>
+    password: <%=mysqlPwd%>
+    hikari:
+      connection-test-query: SELECT 1
+      maximum-pool-size: 20
+  <% if (velocity) { %>
+  velocity:
+    cache: false
+    resource-loader-path: classpath:/templates/
+    number-tool-attribute: number
+    date-tool-attribute: date
+  <% } %>
+  <% if (session) { %>
+  session:
+    store-type: redis
+    redis:
+      namespace: 
+  <% } %>   
+  <% if (mail) { %>
+  mail:
+    host: 
+    username: 
+    password: 
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  <% } %>
+---
+server:
+  port: 8080
+
+spring:
+  profiles: prod
+  <% if (redis) { %>
+  redis:
+    host: 
+    port: 
+    password: 
+    timeout: 1800000
+  <% } %>
+  <% if (mongodb) { %>
+  data:
+    mongodb:
+      host:
+      port: 
+      database: 
+  <% } %>
+  datasource:
+    url: jdbc:mysql://<%=mysqlHost%>:<%=mysqlPort%>/<%=mysqlDb%>?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    username: <%=mysqlUser%>
+    password: <%=mysqlPwd%>
+  <% if (velocity) { %>
+  velocity:
+    cache: true
+  <% } %>

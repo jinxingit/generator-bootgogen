@@ -1,0 +1,34 @@
+{
+  "name": "generator-bootgogen",
+  "version": "0.0.3",
+  "description": "gogen spring boot project generator",
+  "main": "app/index.js",
+  "keywords": [
+    "gogen","yeoman-generator"
+  ],
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "generators"
+  ],
+  "repository": {
+    "type" : "git",
+    "url" : "http://github.com/tt/tt.git"
+  },
+  "dependencies": {
+    "yeoman-generator": "~0.21.0",
+    "shelljs": "0.7.4",
+    "mkdirp": "0.5.1",
+    "chalk": "1.1.3"
+  },
+    "devDependencies": {
+    "mocha": "~3.1.2"
+  },
+  "engines": {
+    "node": ">=4.4.0",
+    "npm": ">=2.14.2"
+  },
+  "author": "S1ahs3r",
+  "license": "WTFPL"
+}

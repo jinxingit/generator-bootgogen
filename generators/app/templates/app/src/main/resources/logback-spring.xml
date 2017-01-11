@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <jmxConfigurator/>
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+
+    <contextName><%=projectName%></contextName>
+    <!--<springProperty name="port" source="server.port" defaultValue=""/>-->
+
+    <springProfile name="!prod">
+        <property name="LOG_HOME" value="./log"/>
+        <property name="APP_LOG_FILE" value="${LOG_HOME}/app.log"/>
+        <property name="ROLLING_APP_LOG_FILE" value="${LOG_HOME}/app.%d{yyyy-MM-dd}.log"/>
+
+        <appender name="APP_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <encoder>
+                <pattern>${FILE_LOG_PATTERN}</pattern>
+            </encoder>
+            <file>${APP_LOG_FILE}</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${ROLLING_APP_LOG_FILE}</fileNamePattern>
+                <maxHistory>30</maxHistory>
+            </rollingPolicy>
+        </appender>
+
+        <logger name="<%=packageName%>" level="DEBUG">
+            <appender-ref ref="APP_FILE"/>
+        </logger>
+        <root>
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+        <property name="LOG_HOME" value="/root/logs"/>
+        <property name="APP_LOG_FILE" value="${LOG_HOME}/app.log"/>
+        <property name="ROLLING_APP_LOG_FILE" value="${LOG_HOME}/app.%d{yyyy-MM-dd}.log"/>
+
+        <appender name="APP_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <encoder>
+                <pattern>${FILE_LOG_PATTERN}</pattern>
+            </encoder>
+            <file>${APP_LOG_FILE}</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${ROLLING_APP_LOG_FILE}</fileNamePattern>
+                <maxHistory>30</maxHistory>
+            </rollingPolicy>
+        </appender>
+
+        <logger name="<%=packageName%>" level="ERROR">
+            <appender-ref ref="APP_FILE"/>
+        </logger>
+
+        <!--<root level="ERROR">-->
+        <root>
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
+    <!--<appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">-->
+    <!--<queueSize>512</queueSize>-->
+    <!--<appender-ref ref="FILE"/>-->
+    <!--</appender>-->
+</configuration>
