@@ -1,0 +1,36 @@
+image: maven:3.3.9-jdk-8
+
+before_script:
+  - mvn clean
+
+stages:
+  - install
+  - ut
+  - it
+
+install:
+  script:
+    - mvn install -Dmaven.test.skip=true
+  stage: install
+  only:
+    - develop
+    - master
+
+ut:
+  script:
+    - mvn test
+  stage: ut
+  only:
+    - develop
+    - master
+
+it:
+  script:
+    - mvn integration-test
+  stage: it
+  only:
+    - develop
+    - master
+
+after_script:
+  - mvn clean

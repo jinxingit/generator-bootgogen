@@ -5,7 +5,7 @@ var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var mkdirp = require('mkdirp');
 
-var dot = '.'; 
+var dot = '.';
 var spl = '/';
 var land = '-';
 var module_app = 'app';
@@ -35,7 +35,7 @@ util.inherits(GogenGenerator, yeoman.generators.Base);
 GogenGenerator.prototype.askFor = function askFor() {
     var cb = this.async();
 
-    console.log(chalk.green(                
+    console.log(chalk.green(
                 `    +-+-+-+-+-+-+-+-+-+-+-+-+-+\n` +
                 `    | Gogen Project Generator |\n` +
                 `    +-+-+-+-+-+-+-+-+-+-+-+-+-+\n` +
@@ -143,7 +143,7 @@ GogenGenerator.prototype.askFor = function askFor() {
         this.websocket = checkOptional('websocket');
         this.velocity = checkOptional('velocity');
         this.session = checkOptional('session');
-        
+
         this.mysqlHost = this.mysqlConn.split(':')[0];
         this.mysqlPort = this.mysqlConn.split(':')[1];
         this.mysqlUser = this.mysqlConn.split(':')[2];
@@ -187,6 +187,10 @@ GogenGenerator.prototype.app = function app() {
 
     // 根目录填充
     this.template('pom.xml',this.projectName+ spl +'pom.xml');
+    this.template('.editorconfig',this.projectName+ spl +'.editorconfig');
+    this.template('.gitattributes',this.projectName+ spl +'.gitattributes');
+    this.template('.gitignore',this.projectName+ spl +'.gitignore');
+    this.template('.gitlab-ci',this.projectName+ spl +'.gitlab-ci');
 
     if(this.needReadme){
         this.template('README-simple.md',this.projectName+ spl +'README.md');
