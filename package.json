@@ -1,14 +1,11 @@
 {
   "name": "generator-bootgogen",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "gogen spring boot project generator",
   "main": "app/index.js",
   "keywords": [
     "gogen","yeoman-generator"
   ],
-  "scripts": {
-    "test": "mocha"
-  },
   "files": [
     "generators"
   ],
