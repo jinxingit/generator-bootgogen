@@ -187,10 +187,10 @@ GogenGenerator.prototype.app = function app() {
 
     // 根目录填充
     this.template('pom.xml',this.projectName+ spl +'pom.xml');
-    this.template('.editorconfig',this.projectName+ spl +'.editorconfig');
-    this.template('.gitattributes',this.projectName+ spl +'.gitattributes');
-    this.template('.gitignore',this.projectName+ spl +'.gitignore');
-    this.template('.gitlab-ci.yml',this.projectName+ spl +'.gitlab-ci.yml');
+    this.template('editorconfig',this.projectName+ spl +'.editorconfig');
+    this.template('gitattributes',this.projectName+ spl +'.gitattributes');
+    this.template('gitignore',this.projectName+ spl +'.gitignore');
+    this.template('gitlab-ci.yml',this.projectName+ spl +'.gitlab-ci.yml');
 
     if(this.needReadme){
         this.template('README-simple.md',this.projectName+ spl +'README.md');
