@@ -190,7 +190,7 @@ GogenGenerator.prototype.app = function app() {
     this.template('.editorconfig',this.projectName+ spl +'.editorconfig');
     this.template('.gitattributes',this.projectName+ spl +'.gitattributes');
     this.template('.gitignore',this.projectName+ spl +'.gitignore');
-    this.template('.gitlab-ci',this.projectName+ spl +'.gitlab-ci');
+    this.template('.gitlab-ci.yml',this.projectName+ spl +'.gitlab-ci.yml');
 
     if(this.needReadme){
         this.template('README-simple.md',this.projectName+ spl +'README.md');
