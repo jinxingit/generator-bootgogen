@@ -43,4 +43,10 @@ mvn mybatis-generator generate
 # 即可使用RootApplication启动项目
 ```
 
+## LICENSE 
+
+GPLv3 
+
+Copyright (C) 2016 S1ahs3r
+
 enjoy. 
