@@ -45,7 +45,7 @@ mvn mybatis-generator generate
 
 ## LICENSE 
 
-GPLv3 
+[GPLv3](http://choosealicense.com/licenses/gpl-3.0/) 
 
 Copyright (C) 2016 S1ahs3r
 

@@ -1,6 +1,6 @@
 {
   "name": "generator-bootgogen",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "gogen spring boot project generator",
   "main": "app/index.js",
   "keywords": [
@@ -27,5 +27,5 @@
     "npm": ">=2.14.2"
   },
   "author": "S1ahs3r",
-  "license": "GPLv3"
+  "license": "GPL-3.0"
 }
