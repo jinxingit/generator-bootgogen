@@ -21,7 +21,7 @@
 - 聚合了Spring Boot全家桶的基本功能. 
 - 自定义package,避免RD不规范的复制项目来占用scope.
 - 仿支付宝Sofa框架的多module分层以及依赖自动解决
-- 可选项支持拓展(eg:redis/mongo/restaesy等)
+- 可选项支持拓展(eg:redis/mongo/restaesy等)
 - Dockerize支持
 - 数据访问代码生成
 - 自带Resteasy系统间访问示例代码
