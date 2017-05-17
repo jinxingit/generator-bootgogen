@@ -46,7 +46,7 @@ GogenGenerator.prototype.askFor = function askFor() {
             type: 'string',
             name: 'projectName',
             message: '输入project name (xxx或者xx-yy形式,创建在当前目录下):',
-            default: 'untitle'
+            default: 'untitled'
         }, {
             type: 'string',
             name: 'packageName',
@@ -111,7 +111,7 @@ GogenGenerator.prototype.askFor = function askFor() {
             type: 'confirm',
             name: 'needReadme',
             message: '是否需要在README中加入新手文档?',
-            default: false
+            default: true
         }
     ];
 
@@ -187,9 +187,9 @@ GogenGenerator.prototype.app = function app() {
     this.template('gitlab-ci.yml',this.projectName+ spl +'.gitlab-ci.yml');
 
     if(this.needReadme){
-        this.template('README-simple.md',this.projectName+ spl +'README.md');
-    }else{
         this.template('README-with-tour.md',this.projectName+ spl +'README.md');
+    }else{
+        this.template('README-simple.md',this.projectName+ spl +'README.md');
     }
 
     //app module填充

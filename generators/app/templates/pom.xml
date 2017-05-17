@@ -148,7 +148,6 @@
             </dependency>
             <!--Mybatis-->
             <dependency>
-
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis</artifactId>
                 <version>${mybatis.version}</version>
@@ -184,6 +183,7 @@
                 <artifactId>HikariCP</artifactId>
                 <version>${hikaricp.version}</version>
             </dependency>
+            
             <!--jwt-->
             <% if (jwt) { %>
             <dependency>
@@ -274,12 +274,6 @@
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
         <% } %>
-        <dependency>
-            <groupId>org.activiti</groupId>
-            <artifactId>activiti-spring-boot-starter-basic</artifactId>
-            <version>${activiti.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
