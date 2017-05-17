@@ -43,6 +43,11 @@ mvn mybatis-generator generate
 # 即可使用RootApplication启动项目
 ```
 
+## SCREENSHOT 
+
+![](https://o4dyfn0ef.qnssl.com/image/2017-05-17-Untitled3.gif) 
+
+
 ## 备忘 
 
 ```
