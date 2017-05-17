@@ -78,29 +78,24 @@ GogenGenerator.prototype.askFor = function askFor() {
                     name: 'velocity支持',
                     value: 'velocity'
                 }, {
-                    name: 'spring session支持(前置redis支持)',
-                    value: 'session'
+                    name: 'jwt支持',
+                    value: 'jwt'
                 }
             ]
         }, {
             type: 'string',
             name: 'bootVersion',
             message: '可选自定义Spring Boot版本:',
-            default: '1.4.3.RELEASE'
+            default: '1.5.3.RELEASE'
         }, {
             type: 'string',
             name: 'mysqlConn',
             message: '可选初始化mysql连接 (ip:port:user:pwd:database):',
             default: '127.0.0.1:3306:root:root:test'
         }, {
-            type: 'string',
-            name: 'nexus',
-            message: '可选初始化nexus地址(ip:port/nexus):',
-            default: '127.0.0.1:9999/nexus'
-        }, {
             type: 'confirm',
             name: 'needSwagger',
-            message: '是否需要自动生成spring mvc接口文档?',
+            message: '是否需要自动生成接口文档?',
             default: true
         }, {
             type: 'confirm',
@@ -132,7 +127,6 @@ GogenGenerator.prototype.askFor = function askFor() {
         this.bootVersion = props.bootVersion;
         this.needGatling = props.needGatling;
         this.mysqlConn = props.mysqlConn;
-        this.nexus = props.nexus;
 
         var checkOptional = function(item) {
             return props.optionalItem.indexOf(item) !== -1;
@@ -142,7 +136,7 @@ GogenGenerator.prototype.askFor = function askFor() {
         this.mail = checkOptional('mail');
         this.websocket = checkOptional('websocket');
         this.velocity = checkOptional('velocity');
-        this.session = checkOptional('session');
+        this.jwt = checkOptional('jwt');
 
         this.mysqlHost = this.mysqlConn.split(':')[0];
         this.mysqlPort = this.mysqlConn.split(':')[1];

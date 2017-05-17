@@ -20,33 +20,8 @@
 
     <dependencies>
         <dependency>
-            <groupId><%=fullCommonUtil%></groupId>
-            <artifactId><%=artCommonUtil%></artifactId>
-        </dependency>
-        <dependency>
-            <groupId><%=fullCommonDal%></groupId>
-            <artifactId><%=artCommonDal%></artifactId>
-        </dependency>
-        <dependency>
             <groupId><%=fullCommonServiceExporter%></groupId>
             <artifactId><%=artCommonServiceExporter%></artifactId>
-        </dependency>
-        <dependency>
-            <groupId><%=fullCommonServiceReferer%></groupId>
-            <artifactId><%=artCommonServiceReferer%></artifactId>
-        </dependency>
-        <dependency>
-            <groupId><%=fullCoreModel%></groupId>
-            <artifactId><%=artCoreModel%></artifactId>
-        </dependency>
-        <dependency>
-            <groupId><%=fullCoreSrvice%></groupId>
-            <artifactId><%=artCoreSrvice%></artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
         </dependency>
          <% if (needGatling) { %>
         <dependency>
@@ -56,7 +31,6 @@
         </dependency>
          <% } %>
     </dependencies>
-
     <build>
         <defaultGoal>spring-boot:run</defaultGoal>
         <resources>
@@ -70,7 +44,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass><%=fullApp%>.RootApplication</mainClass>
+                    <mainClass>com.gogen.nirvana.app.NirvanaApplication</mainClass>
                     <layout>JAR</layout>
                     <!--<jvmArguments>-->
                     <!-- -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5555-->
@@ -86,6 +60,7 @@
                 <executions>
                     <execution>
                         <goals>
+                            <goal>build-info</goal>
                             <goal>repackage</goal>
                         </goals>
                         <configuration>
@@ -104,6 +79,7 @@
                     <!--<goal>stop</goal>-->
                     <!--</goals>-->
                     <!--</execution>-->
+
                 </executions>
             </plugin>
 
@@ -190,7 +166,7 @@
                     </rules>
                 </configuration>
             </plugin>
-            <% if (needGatling) { %>
+
             <plugin>
                 <groupId>io.gatling</groupId>
                 <artifactId>gatling-maven-plugin</artifactId>
@@ -208,10 +184,23 @@
                     <simulationClass>*</simulationClass>
                 </configuration>
             </plugin>
-            <% } %>
+
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <nonFilteredFileExtensions>
+                        <!-- fonts -->
+                        <nonFilteredFileExtension>eot</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>svg</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>ttf</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>woff</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>woff2</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>html</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>ico</nonFilteredFileExtension>
+                    </nonFilteredFileExtensions>
+                </configuration>
                 <executions>
                     <execution>
                         <id>default-resources</id>
@@ -255,11 +244,93 @@
                             <outputDirectory>${basedir}/target/classes/public</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>public/**</directory>
+                                    <directory>${project.basedir}/src/main/resources/public/**</directory>
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>
                         </configuration>
+                    </execution>
+                    <!--<execution>-->
+                        <!--<id>copy-resources</id>-->
+                        <!--<phase>prepare-package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>copy-resources</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<outputDirectory>-->
+                                <!--${project.build.outputDirectory}/static/docs-->
+                            <!--</outputDirectory>-->
+                            <!--<resources>-->
+                                <!--<resource>-->
+                                    <!--<directory>-->
+                                        <!--${project.build.directory}/generated-docs-->
+                                    <!--</directory>-->
+                                <!--</resource>-->
+                            <!--</resources>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                </executions>
+            </plugin>
+
+            <!--<plugin>-->
+                <!--<groupId>org.asciidoctor</groupId>-->
+                <!--<artifactId>asciidoctor-maven-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>generate-docs</id>-->
+                        <!--<phase>prepare-package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>process-asciidoc</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<backend>html</backend>-->
+                            <!--<doctype>book</doctype>-->
+                            <!--<attributes>-->
+                                <!--<snippets>${snippetsDirectory}</snippets>-->
+                            <!--</attributes>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>get-the-git-infos</id>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>validate-the-git-infos</id>
+                        <goals>
+                            <goal>validateRevision</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                    <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
@@ -271,8 +342,8 @@
                     <imageName>registry.gogen.com/<%=projectName%>-image</imageName>
                     <imageTags>
                         <!--发布前修改本tag版本-->
-                        <imageTag><%=proVersion%></imageTag>
-                        <!--<imageTag>latest</imageTag>-->
+                        <imageTag>0.0.1</imageTag>
+                        <imageTag>latest</imageTag>
                     </imageTags>
                     <dockerDirectory>${project.basedir}/docker</dockerDirectory>
                     <resources>
@@ -287,18 +358,5 @@
             <% } %>
         </plugins>
     </build>
-
-    <distributionManagement>
-        <repository>
-            <id>nirvana-releases</id>
-            <name>releases</name>
-            <url>http://<%=nexus%>/content/repositories/releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>nirvana-snapshots</id>
-            <name>snapshots</name>
-            <url>http://<%=nexus%>/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
 
 </project>

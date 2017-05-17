@@ -1,3 +1,10 @@
+info:
+  app:
+    name: <%=projectName%>
+    encoding: utf-8
+  java:
+    version: 1.8
+
 server:
   port: 8080
   session:
@@ -6,6 +13,10 @@ server:
 endpoints:
   shutdown:
     enabled: true
+
+management:
+  security:
+    enabled: false
 
 spring:
   application:
@@ -54,13 +65,7 @@ spring:
     resource-loader-path: classpath:/templates/
     number-tool-attribute: number
     date-tool-attribute: date
-  <% } %>
-  <% if (session) { %>
-  session:
-    store-type: redis
-    redis:
-      namespace: 
-  <% } %>   
+  <% } %> 
   <% if (mail) { %>
   mail:
     host: 
