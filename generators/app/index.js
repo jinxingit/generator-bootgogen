@@ -39,19 +39,19 @@ GogenGenerator.prototype.askFor = function askFor() {
                 `    +-+-+-+-+-+-+-+-+-+-+-+-+-+\n` +
                 `    | Gogen Project Generator |\n` +
                 `    +-+-+-+-+-+-+-+-+-+-+-+-+-+\n` +
-        chalk.yellow('\n你可以根据本向导构建出一个基本的Spring Boot项目\n\n更多的自定义需求可以联系 @折原 进行添加\n\n')));
+        chalk.yellow('\n你可以根据本向导构建出一个基本的Spring Boot项目\n\n更多的自定义需求可以联系 @金鑫 进行添加\n\n')));
 
     var prompts = [
         {
             type: 'string',
-            name: 'projectName',
-            message: '输入project name (xxx或者xx-yy形式,创建在当前目录下):',
+            name: 'projectName and artifactId',
+            message: '输入project name (eg:ampmind-service-vehiclebiz 形式,创建在当前目录下):',
             default: 'untitled'
         }, {
             type: 'string',
-            name: 'packageName',
-            message: '输入package name (com.gogen.project.sub形式):',
-            default: 'com.gogen.project.sub'
+            name: 'packageName and groupId',
+            message: '输入package name (eg:com.ampmind.service.vehiclebiz 形式):',
+            default: 'com.ampmind.service.vehiclebiz'
         },{
             type: 'string',
             name: 'proVersion',
@@ -66,16 +66,16 @@ GogenGenerator.prototype.askFor = function askFor() {
                     name: 'redis支持',
                     value: 'redis'
                 }, {
-                    name: 'mongodb支持',
+                    name: 'mybatis支持',
                     value: 'mongodb'
                 }, {
                     name: 'websocket支持',
                     value: 'websocket'
                 }, {
-                    name: 'mail支持',
+                    name: 'pubsub支持',
                     value: 'mail'
                 }, {
-                    name: 'velocity支持',
+                    name: 'Thymeleaf支持',
                     value: 'velocity'
                 }, {
                     name: 'jwt支持',
