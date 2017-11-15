@@ -1,6 +1,6 @@
 {
   "name": "generator-chehejia-test",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "chehejia spring boot project generator",
   "main": "app/index.js",
   "keywords": [

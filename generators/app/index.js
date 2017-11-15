@@ -36,27 +36,27 @@ GogenGenerator.prototype.askFor = function askFor() {
     var cb = this.async();
 
     console.log(chalk.green(
-                `    +-+-+-+-+-+-+-+-+-+-+-+-+-+\n` +
-                `    | Gogen Project Generator |\n` +
-                `    +-+-+-+-+-+-+-+-+-+-+-+-+-+\n` +
-        chalk.yellow('\n你可以根据本向导构建出一个基本的Spring Boot项目\n\n更多的自定义需求可以联系 @金鑫 进行添加\n\n')));
+                `    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n` +
+                `    | CHJ springboot Project Generator  |\n` +
+                `    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n` +
+        chalk.yellow('\n你可以根据本向导构建出一个基本的Spring Boot项目\n\n更多的自定义需求可以进行添加，此版本只为了演示\n\n')));
 
     var prompts = [
         {
             type: 'string',
-            name: 'projectName and artifactId',
-            message: '输入project name (eg:ampmind-service-vehiclebiz 形式,创建在当前目录下):',
+            name: 'projectName',
+            message: '输入project name (ampmind-service-vehiclebiz形式,创建在当前目录下):',
             default: 'untitled'
         }, {
             type: 'string',
-            name: 'packageName and groupId',
-            message: '输入package name (eg:com.ampmind.service.vehiclebiz 形式):',
+            name: 'packageName',
+            message: '输入package name (com.ampmind.service.vehiclebiz形式):',
             default: 'com.ampmind.service.vehiclebiz'
         },{
             type: 'string',
             name: 'proVersion',
-            message: '输入项目版本 (x.y.z形式):',
-            default: '0.0.1'
+            message: '输入项目版本 (x.y.z.a-SNAPSHOT形式):',
+            default: '0.0.0.1-SNAPSHOT'
         }, {
             type: 'checkbox',
             name: 'optionalItem',
@@ -66,16 +66,16 @@ GogenGenerator.prototype.askFor = function askFor() {
                     name: 'redis支持',
                     value: 'redis'
                 }, {
-                    name: 'mybatis支持',
+                    name: 'pubsub支持',
                     value: 'mongodb'
                 }, {
                     name: 'websocket支持',
                     value: 'websocket'
                 }, {
-                    name: 'pubsub支持',
+                    name: 'mdis支持',
                     value: 'mail'
                 }, {
-                    name: 'Thymeleaf支持',
+                    name: 'thymeleaf支持',
                     value: 'velocity'
                 }, {
                     name: 'jwt支持',
@@ -261,3 +261,4 @@ function pac2land(ss,tt){
 }
 
 GogenGenerator.prototype.projectfiles = function projectfiles() {};
+
