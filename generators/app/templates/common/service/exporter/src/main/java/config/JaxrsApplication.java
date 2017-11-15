@@ -6,7 +6,6 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 /**
- * Created by Slahser on 14/12/2016 12:19 
  * <p>
  * <p>
  *

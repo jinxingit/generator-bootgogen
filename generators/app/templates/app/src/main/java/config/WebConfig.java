@@ -5,7 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * Created by Slahser on 8/17/16 11:00 
+ * 配置restTemplate
+ * @author jinxin
  */
 @Configuration
 public class WebConfig {

@@ -7,9 +7,10 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
- * Created by Slahser on 8/19/16 14:42
- * <p>
+ *
  * 本类有很多可以供override的方法来配置mvc
+ * @author jinxin
+ *
  */
 @Configuration
 public class MvcConfig extends WebMvcConfigurerAdapter {
@@ -19,6 +20,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         //registry.addRedirectViewController("/index","/index");
         //此处可配置view跳转controller
         super.addViewControllers(registry);
+
     }
 
     @Override

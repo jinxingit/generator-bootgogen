@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 /**
- * Created by Slahser on 8/24/16 13:58 
+ * controller切面
+ * 异常拦截，参数绑定，属性设置
  */
 @ControllerAdvice
 @Slf4j

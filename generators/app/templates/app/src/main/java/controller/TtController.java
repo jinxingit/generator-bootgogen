@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by Slahser on 18/10/2016 14:30 in gogen-nirvana
+ * 示例
  */
 @RestController
 public class TtController {

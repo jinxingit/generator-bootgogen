@@ -6,9 +6,7 @@ import org.springframework.stereotype.Component;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-/**
- * Created by Slahser on 14/12/2016 12:24 
- */
+
 @Path("/ttjsxrs")
 @Component
 public class TtJaxrs {

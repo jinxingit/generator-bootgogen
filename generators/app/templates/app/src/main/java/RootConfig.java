@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Import;
 
 /**
  * 系统配置
- * Created by Slahser on 8/16/16 11:43 
  */
 @Configuration
 @ComponentScan("<%=packageName%>")

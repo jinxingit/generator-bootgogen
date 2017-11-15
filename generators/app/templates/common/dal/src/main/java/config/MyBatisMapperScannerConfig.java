@@ -8,9 +8,6 @@ import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 
 import java.util.Properties;
 
-/**
- * Created by Slahser on 8/18/16 16:57 
- */
 @Configuration
 @AutoConfigureAfter(MyBatisConfig.class)
 public class MyBatisMapperScannerConfig {

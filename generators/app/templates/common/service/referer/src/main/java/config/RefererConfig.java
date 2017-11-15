@@ -15,7 +15,6 @@ import org.springframework.web.client.RestTemplate;
  * 生产者通过起restTemplate测试
  * 消费者通过连接到mock server测试
  *
- * Created by Slahser on 9/19/16 10:53
  */
 @Configuration
 public class RefererConfig {

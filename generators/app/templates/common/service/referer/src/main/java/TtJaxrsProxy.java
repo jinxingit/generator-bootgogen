@@ -5,9 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-/**
- * Created by Slahser on 14/12/2016 13:17 
- */
+
 @Component
 public class TtJaxrsProxy {
 
